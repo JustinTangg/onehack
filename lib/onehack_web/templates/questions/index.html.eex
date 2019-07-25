@@ -1,0 +1,21 @@
+<script>
+var questions=<%= raw(Poison.encode!(build_questions_json(@questions))) %>
+var questions_columns=<%= raw(Poison.encode!(build_columns_json(questions_column_data()))) %>
+</script>
+
+<%= link "Create", to: Routes.questions_path(@conn, :new), class: "button right" %>
+
+<div class="table-responsive">
+  <table id="questions_table" class="table" width="100%">
+    <thead>
+      <tr>
+        <%= raw(column_headers(questions_column_data())) %>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <%= raw(column_headers(questions_column_data())) %>
+      </tr>
+    </tfoot>
+  </table>
+</div>

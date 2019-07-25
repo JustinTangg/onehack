@@ -1,0 +1,31 @@
+<h2>Create User</h2>
+
+<%= form_for @changeset, Routes.users_path(@conn, :create), [], fn f -> %>
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="name">Name</label>
+    <%= text_input f, :name, class: "form-control", id: "name" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="email">Email</label>
+    <%= email_input f, :email, class: "form-control", id: "email" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="phone_number">Phone Number</label>
+    <%= telephone_input f, :phone_number, class: "form-control", id: "phone_number", required: true %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="username">Username</label>
+    <%= text_input f, :username, class: "form-control", id: "username", required: true %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="password">Password</label>
+    <%= password_input f, :password, class: "form-control", id: "password", required: true %>
+  </div>
+
+  <button type="button" class="btn btn-primary" id="back-button">Back</button>
+  <%= submit "Create", class: "btn btn-primary" %>
+<% end %>

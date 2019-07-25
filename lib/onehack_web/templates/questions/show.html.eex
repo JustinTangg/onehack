@@ -1,0 +1,40 @@
+<script>
+var answers=<%= raw(Poison.encode!(build_answers_json(@answers))) %>
+var user_id=<%= @user.id %>
+var question_id=<%= @question.id %>
+var question='<%= @question.question %>'
+var question_status=<%= @question.closed %>
+var user_phone_number='<%= @user.phone_number %>'
+var question_user_id=<%= @question.user_id %>
+var question_name='<%= @question_name %>'
+var question_phone_number='<%= @question_phone_number %>'
+</script>
+
+<h2><%= @question.question %></h2>
+<p><%= @question.description %></p>
+
+<div class="form-group">
+  <label class="control-label font-weight-bold" for="addanswer">Respond:</label>
+  <textarea rows="4" id="addanswer"></textarea>
+  <button type="button" class="btn btn-primary" style="float:right" id="submit">Submit</button>
+</div>
+<br><br><br>
+<%= for answer <- @answers do %>
+  <%= if rem(answer.index, 2) == 0 do %>
+    <div class="form-group comments" style="background-color:#ECF0F1">
+  <% else %>
+    <div class="form-group comments" style="background-color:lightgray">
+  <% end %>
+    <%= if answer.correct do %>
+      <span class="emoji clicked" id=<%= answer.id %>>★</span>
+    <% else %>
+      <span class="emoji unclicked" id=<%= answer.id %>>★</span>
+    <% end %>
+    <label class="control-label weak" for="ans"><strong><%= get_user_name(answer.user_id) %></strong> <i><%= answer.inserted_at %></i></label>
+    <p id="ans"><%= answer.answer %></p>
+    <br>
+    </div>
+<% end %>
+
+<br>
+<button type="button" class="btn btn-danger" id="back-button">Back</button>

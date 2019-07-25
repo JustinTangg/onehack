@@ -1,0 +1,8 @@
+<section style="margin-top:150px;">
+<label class="control-label font-weight-bold" for="username">Username</label>
+<input type="text" id="username" placeholder="Enter Username" name="Username"> <label style="display:none;color:red" class="error" id="error"></label>
+<label class="control-label font-weight-bold" for="password">Password</label>
+<input type="password" id="password" placeholder="Enter Password" name="Password">
+<%= link "Not Registered? Register Here", to: Routes.users_path(@conn, :new) %>
+<button type="button" class="btn btn-primary right" id="login-button">Login</button>
+</section>

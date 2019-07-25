@@ -1,0 +1,21 @@
+<h2>Post Question</h2>
+
+<%= form_for @changeset, Routes.questions_path(@conn, :create), [], fn f -> %>
+  <%= hidden_input f, :user_id, class: "form-control", id: "user_id", value: @user.id %>
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="name">Question</label>
+    <%= text_input f, :question, class: "form-control", id: "question" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="email">Description</label>
+    <%= textarea f, :description, class: "form-control", id: "description" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label font-weight-bold" for="bounty">Bounty</label>
+    <%= number_input f, :bounty, class: "form-control", id: "bounty", required: true %>
+  </div>
+  <button type="button" class="btn btn-danger" id="back-button">Back</button>
+  <%= submit "Create", class: "btn btn-primary" %>
+<% end %>
